@@ -247,7 +247,7 @@ def offline_experiment():
     print(np.mean(res_cm, 1))
     
     pickle.dump([res_bl, res_cmv, res_cm], open('res_all.pkl', 'wb'))
-    pickle.dump(save_cm, open('sooyong_test.pkl', 'wb'))
+    # pickle.dump(save_cm, open('sooyong_test.pkl', 'wb'))
 
 if __name__ == "__main__":
     if sys.argv[1] == 'online':
