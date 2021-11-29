@@ -156,7 +156,7 @@ def online_experiment():
     print ("-------------------break----------")
     e.do_exp(2, 10, 1, 0)
     #e.do_exp(3, 10, 1, 0)
-    pickle.dump(e.res, open('active_cmv3.pkl', 'w'))
+    pickle.dump(e.res, open('active_cmv3.pkl', 'wb'))
     
     #e.do_exp(1, 10, 0, 1)
     #e.do_exp(2, 10, 0, 1)
@@ -216,8 +216,8 @@ def offline_experiment():
             (ps, pt, pp_s, pp_t, clf_st, clf_vera) = util.baseline_crowd(\
             train_val_data_pp, X_train_val, test_data_pp, X_test, cds, cdv, return_proba=True)
             
-            print (e)
-            print(util.get_acc(test_data_pp, ps, pt, pp_t))
+            print ("printing e:", e)
+            print("printing baseline crowd acc:", util.get_acc(test_data_pp, ps, pt, pp_t))
             res_bl[i].append(util.get_acc(test_data_pp, ps, pt, pp_t))
             
             cm.em(3)
@@ -232,22 +232,23 @@ def offline_experiment():
                    cmv.res_v[240:], cmv.alpha[240:]))
             
             #print util.get_acc(test_data_pp, cm.res_s[2071:], cm.res_v[240:])
-            print(util.get_acc(test_data_pp, cmv.res_s[2071:], \
+            print("printing crowd model variational acc:", util.get_acc(test_data_pp, cmv.res_s[2071:], \
                    cmv.res_v[240:], cmv.alpha[240:]))
             print('------------------')
             
             
     res_bl = np.asarray(res_bl)
-    print(np.mean(res_bl, 1))
+    print("printing res_bl:", np.mean(res_bl, 1))
     
     res_cmv = np.asarray(res_cmv)
-    print(np.mean(res_cmv, 1))
+    print("printing res_cmv:", np.mean(res_cmv, 1))
     
     res_cm = np.asarray(res_cm)
-    print(np.mean(res_cm, 1))
+    print("printing res_cm:", np.mean(res_cm, 1))
     
-    pickle.dump([res_bl, res_cmv, res_cm], open('res_all.pkl', 'wb'))
+    # pickle.dump([res_bl, res_cmv, res_cm], open('res_all.pkl', 'wb'))
     # pickle.dump(save_cm, open('sooyong_test.pkl', 'wb'))
+
 
 if __name__ == "__main__":
     if sys.argv[1] == 'online':

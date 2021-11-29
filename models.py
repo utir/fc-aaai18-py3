@@ -937,6 +937,7 @@ class model_cv(crowd_model):
                         es = np.log(sxs).dot(self.alpha[claim, 1])
                     else:
                         es = np.log(sxs).dot(self.alpha[claim])
+                    np.seterr(divide='ignore')
                     self.beta[stance][s_val] = np.exp( es + np.log(pfs[stance,s_val]) )
                 
                 #normalize

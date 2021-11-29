@@ -23,3 +23,6 @@ python run_experiment.py online
 ```
 
 Mturk directory contains stance labels collected by Amazon Mechanical Turk. The worker IDs have been mapped to another set of IDs. 
+
+
+Note: Please use Python 3.6 for your conda environment.
